@@ -1,0 +1,27 @@
+.tile {
+  height: 210px;
+  background-size: cover;
+}
+
+.bg-grey-light {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.font-weight {
+  font-weight: 500;
+  color: white;
+}
+
+.flex-col-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.border-tile-select {
+  border: dashed red;
+}
+
+.deselect {
+  border-style:none;
+}
