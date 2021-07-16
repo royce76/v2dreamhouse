@@ -3,7 +3,7 @@
     <div class="slds-grid slds-wrap">
       <template if:true={houses.data}>     
         <template for:each={houses.data} for:item="house">
-          <div key={house.Id} class="slds-small-size_12-of-12 slds-medium-size_1-of-2">
+          <div key={house.Id} class="slds-col slds-small-size_12-of-12 slds-medium-size_1-of-2">
             <c-house-tile house={house} house-selected-id={houseSelectedId} onhouseselected={handleHouseSelected}></c-house-tile>
           </div>
         </template>     

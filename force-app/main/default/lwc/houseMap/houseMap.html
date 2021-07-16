@@ -1,0 +1,7 @@
+<template>
+    <template if:true={house.data}>
+      <template for:each={house.data} for:item="ki">
+        <lightning-card title={ki.Name} key={}></lightning-card>
+      </template>
+    </template>
+</template>

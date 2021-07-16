@@ -1,15 +1,13 @@
 <template>
-  <div class={classHouseSelect}>
-    <div style={backgroundImage} class="tile slds-m-around_x-small flex-col-end" onclick={handleHouseId}>   
-      <div class="slds-box bg-grey-light">
-        <dl class="slds-dl_inline font-weight">
-          <dt class="slds-dl_inline__label">Beds:</dt>
-          <dd class="slds-dl_inline__detail">{house.Beds__c}</dd>
-          <dt class="slds-dl_inline__label">Baths:</dt>
-          <dd class="slds-dl_inline__detail">{house.Baths__c}d</dd>
-        </dl>
-        <lightning-formatted-number value={house.Price__c} format-style="currency" currency-code="USD" currency-display-as="symbol" class="font-weight"></lightning-formatted-number>
-      </div>
+  <div style={backgroundImage} class={classHouseSelect} onclick={handleHouseId}>   
+    <div class="slds-box bg-grey-light">
+      <dl class="slds-dl_inline font-weight">
+        <dt class="slds-dl_inline__label">Beds:</dt>
+        <dd class="slds-dl_inline__detail">{house.Beds__c}</dd>
+        <dt class="slds-dl_inline__label">Baths:</dt>
+        <dd class="slds-dl_inline__detail">{house.Baths__c}</dd>
+      </dl>
+      <lightning-formatted-number value={house.Price__c} format-style="currency" currency-code="USD" currency-display-as="symbol" class="font-weight"></lightning-formatted-number>
     </div>
   </div>
 </template>
