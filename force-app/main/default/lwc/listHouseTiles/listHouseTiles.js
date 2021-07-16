@@ -13,7 +13,7 @@ export default class ListHouseTiles extends LightningElement {
   @wire(MessageContext)
   messageContext;
 
-  houseSelectedId = '';
+  houseSelectedId;
 
   /**
    * Provides the house Id selected to be published in a message

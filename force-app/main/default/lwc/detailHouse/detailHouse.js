@@ -1,12 +1,17 @@
 import { LightningElement, wire, api } from 'lwc';
-import MCHS from '@salesforce/messageChannel/messageChannelHouseSelected__c';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+
+import { NavigationMixin } from 'lightning/navigation';
+
+import MCHS from '@salesforce/messageChannel/messageChannelHouseSelected__c';
 import { subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
 
 import HOUSE_OBJECT_API_NAME from '@salesforce/schema/Property__c';
+
 import PICTURE_FIELD from '@salesforce/schema/Property__c.Picture__c';
 import CITY_FIELD from '@salesforce/schema/Property__c.City__c';
 import NAME_FIELD from '@salesforce/schema/Property__c.Name';
+
 import BEDS_FIELD from '@salesforce/schema/Property__c.Beds__c';
 import BATHS_FIELD from '@salesforce/schema/Property__c.Baths__c';
 import PRICE_FIELD from '@salesforce/schema/Property__c.Price__c';
@@ -21,13 +26,13 @@ const HOUSE_FIELDS = [
   NAME_FIELD
 ];
 
-export default class DetailHouse extends LightningElement {
+export default class DetailHouse extends NavigationMixin(LightningElement) {
   subscription = null;
 
   /**
    * houseId will be provided by the channel message service MCHS
    */
-  houseId = '';
+  houseId;
 
   objectApiName = HOUSE_OBJECT_API_NAME;
 
@@ -119,6 +124,20 @@ export default class DetailHouse extends LightningElement {
 
   disconnectedCallback() {
     this.unsubscribeToMessageChannel();
+  }
+
+  /**
+   * Navigate to the record house
+   */
+  handleNavigateToRecordHouse(){
+    this[NavigationMixin.Navigate]({
+      type : 'standard__recordPage',
+      attributes: {
+        recordId : this.recordId,
+        objectApiName : 'Property__c',
+        actionName : 'view'
+      }
+    });
   }
 
 }

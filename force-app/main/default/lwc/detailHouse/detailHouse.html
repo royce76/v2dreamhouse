@@ -1,7 +1,7 @@
 <template>
     <template if:true={house.data}>
       <lightning-card title={cityHouse} icon-name="custom:custom85">
-        <lightning-button-icon icon-name="utility:record_lookup" alternative-text="Record look up" slot="actions"></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:record_lookup" alternative-text="Record look up" slot="actions" onclick={handleNavigateToRecordHouse}></lightning-button-icon>
         <figure>
           <img src={pictureHouse} alt="picture house">
           <figcaption>{nameHouse}</figcaption>
