@@ -4,7 +4,7 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import { NavigationMixin } from 'lightning/navigation';
 
 import MCHS from '@salesforce/messageChannel/messageChannelHouseSelected__c';
-import { subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
+import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
 
 import HOUSE_OBJECT_API_NAME from '@salesforce/schema/Property__c';
 
@@ -91,15 +91,14 @@ export default class DetailHouse extends NavigationMixin(LightningElement) {
   /**
    * If there is no subcription, it subscribes the message to get the Id of the house
    */
-  subscribeToMessageChannel() {
-    if(!this.subscription) {
-      this.subscription = subscribe(
-        this.messageContext,
-        MCHS,
-        (message)=>this.handleMessage(message),
-        { scope : APPLICATION_SCOPE }
-      );
-    }
+  subscribeToMessageChannel() { 
+    this.subscription = subscribe(
+      this.messageContext,
+      MCHS,
+      (message)=>{
+        this.handleMessage(message);
+      }
+    );
   }
 
   unsubscribeToMessageChannel() {
